@@ -6,8 +6,10 @@ Implementation of a simple rock, paper, scissors app in PHP.
 
 Open your terminal, go to the current directory, and run the following command
 
+
 ```
-php rps.php
+* composer update
+* php main.php
 ```
 
 Then enter your choice foreach time script ask you to enter.
@@ -17,3 +19,9 @@ Note that number of tries is 100.
 # Conclusion
 
 A command-line challenge where two players with different strategies are playing against each other.
+
+# Running Test Cases
+
+```
+vendor/bin/phpunit
+```
