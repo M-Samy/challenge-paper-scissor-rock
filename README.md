@@ -25,3 +25,11 @@ A command-line challenge where two players with different strategies are playing
 ```
 vendor/bin/phpunit
 ```
+
+# Technologies
+
+```
+* PHP
+* PHPUnit
+
+```
