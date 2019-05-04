@@ -1,11 +1,17 @@
 <?php
-// Rock = 1 Paper = 2 Scissors = 3
-// Rock beats Scissors, 1 > 3
-// Paper beats Rock, 2 > 1
-// Scissors beats Paper, 3 > 2
+namespace Challenge\RPS;
 
-require_once("Players.php");
-require_once("RPSHelper.php");
+include_once("app/Rock.php");
+include_once("app/Scissors.php");
+include_once("app/Paper.php");
+include_once("app/Players.php");
+include_once("Helpers/RPSHelper.php");
+
+use Challeng\App\Rock;
+use Challeng\App\Scissors;
+use Challeng\App\Paper;
+use Challeng\App\Players;
+use Challenge\Helpers\RPSHelper;
 
 class RPS
 {
@@ -15,9 +21,20 @@ class RPS
         'scissors' => 'paper'
     );
 
-    static $numOfTries = 100;
+    static $numOfTries = 5;
 
-    static function getRoundWinner($playerA, $playerB)
+    public $rockObj, $scissorsObj, $paperObj, $helperObj, $playerA, $playerB;
+
+    function __construct() {
+        $this->rockObj = new Rock();
+        $this->scissorsObj = new Scissors();
+        $this->paperObj = new Paper();
+        $this->helperObj = new RPSHelper();
+        $this->playerA = new Players();
+        $this->playerB = new Players();
+    }
+
+    public function getRoundWinner($playerA, $playerB)
     {
         $player_a_choice = $playerA->choice;
         $player_b_choice = $playerB->choice;
@@ -40,24 +57,24 @@ class RPS
     }
 
 
-    static function Play($playerA, $playerB)
+    public function Play($playerA, $playerB)
     {
-        $playerB->choice = 'paper';
+        $playerB->choice = $this->paperObj->getName();
         $iteratorReference = 0;
 
         while ($iteratorReference < RPS::$numOfTries) {
             echo("Hi player A please enter your choice: ");
             $playerA->choice = strtolower(trim(fgets( STDIN )));
-            if (!RPSHelper::check_keys_existence(RPS::$choices, array($playerA->choice)))  {
+            if (!$this->helperObj->check_keys_existence(RPS::$choices, array($playerA->choice)))  {
                 echo "Choice key error try again \n";
                 continue;
             }
-            RPS::getRoundWinner($playerA, $playerB);
+            $this->getRoundWinner($playerA, $playerB);
             $iteratorReference ++;
         }
     }
 
-    static function getWinner($playerA, $playerB)
+    public function getWinner($playerA, $playerB)
     {
         $playerAScore = $playerA->wins;
         $playerBScore = $playerB->wins;
@@ -68,7 +85,3 @@ class RPS
     }
 }
 
-$playerA = new Players();
-$playerB = new Players();
-RPS::Play($playerA, $playerB);
-RPS::getWinner($playerA, $playerB);

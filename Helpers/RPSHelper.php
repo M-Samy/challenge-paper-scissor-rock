@@ -1,5 +1,5 @@
 <?php
-
+namespace Challenge\Helpers;
 
 class RPSHelper
 {

@@ -1,6 +1,8 @@
 <?php
+namespace Challeng\App;
 
-require_once("PlayersInterface.php");
+include_once("PlayersInterface.php");
+use Challenge\PlayersInterface;
 
 class Players implements PlayersInterface
 {
@@ -20,7 +22,7 @@ class Players implements PlayersInterface
     }
 
 
-    function getPlayerBPlay()
+    public function getPlayerBPlay()
     {
         $choicesArray = array("paper", "rock","scissors");
         return array_rand($choicesArray);
