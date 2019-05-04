@@ -5,13 +5,13 @@ include_once("app/Rock.php");
 include_once("app/Scissors.php");
 include_once("app/Paper.php");
 include_once("app/Players.php");
-include_once("Helpers/RPSHelper.php");
+include_once("helpers/RPSHelper.php");
 
 use Challenge\App\Rock;
 use Challenge\App\Scissors;
 use Challenge\App\Paper;
 use Challenge\App\Players;
-use Challenge\Helpers\RPSHelper;
+use Challenge\helpers\RPSHelper;
 
 class RPS
 {
@@ -21,9 +21,8 @@ class RPS
         'scissors' => 'paper'
     );
 
-    static $numOfTries = 5;
 
-    public $rockObj, $scissorsObj, $paperObj, $helperObj, $playerA, $playerB;
+    public $rockObj, $scissorsObj, $paperObj, $helperObj, $playerA, $playerB, $configs;
 
     function __construct() {
         $this->rockObj = new Rock();
@@ -32,6 +31,7 @@ class RPS
         $this->helperObj = new RPSHelper();
         $this->playerA = new Players();
         $this->playerB = new Players();
+        $this->configs = file_get_contents("config/config.json");
     }
 
     public function getRoundWinner($playerA, $playerB)
@@ -61,8 +61,8 @@ class RPS
     {
         $playerB->choice = $this->paperObj->getName();
         $iteratorReference = 0;
-
-        while ($iteratorReference < RPS::$numOfTries) {
+        $roundsNumber = json_decode($this->configs)->number_of_rounds;
+        while ($iteratorReference < $roundsNumber) {
             echo("Hi player A please enter your choice: ");
             $playerA->choice = strtolower(trim(fgets( STDIN )));
             if (!$this->helperObj->check_keys_existence(RPS::$choices, array($playerA->choice)))  {

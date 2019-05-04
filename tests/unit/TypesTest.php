@@ -4,12 +4,12 @@ include_once("app/Rock.php");
 include_once("app/Scissors.php");
 include_once("app/Paper.php");
 include_once("app/Players.php");
-include_once("Helpers/RPSHelper.php");
+include_once("helpers/RPSHelper.php");
 
 use Challenge\App\Rock;
 use Challenge\App\Scissors;
 use Challenge\App\Paper;
-use Challenge\Helpers\RPSHelper;
+use Challenge\helpers\RPSHelper;
 use PHPUnit\Framework\TestCase;
 
 class TypesTest extends TestCase

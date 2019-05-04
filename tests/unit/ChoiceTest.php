@@ -1,6 +1,6 @@
 <?php
 
-use Challenge\Helpers\RPSHelper;
+use Challenge\helpers\RPSHelper;
 use PHPUnit\Framework\TestCase;
 
 class ChoiceTest extends TestCase
