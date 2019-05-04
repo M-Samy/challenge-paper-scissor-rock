@@ -12,4 +12,9 @@ class RPSHelper
         }
         return count($keys) === $count ? true : false;
     }
+
+    static function getClassName($className) {
+        $path = explode('\\', $className);
+        return array_pop($path);
+    }
 }

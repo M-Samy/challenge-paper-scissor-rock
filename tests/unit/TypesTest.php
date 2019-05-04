@@ -9,6 +9,7 @@ include_once("Helpers/RPSHelper.php");
 use Challenge\App\Rock;
 use Challenge\App\Scissors;
 use Challenge\App\Paper;
+use Challenge\Helpers\RPSHelper;
 use PHPUnit\Framework\TestCase;
 
 class TypesTest extends TestCase
@@ -16,18 +17,18 @@ class TypesTest extends TestCase
     public function testCheckRockType()
     {
         $rock = new Rock();
-        $this->assertEquals(get_class($rock), "Challenge\App\Rock");
+        $this->assertEquals(RPSHelper::getClassName(get_class($rock)), "Rock");
     }
 
     public function testCheckPaperType()
     {
         $paper = new Paper();
-        $this->assertEquals(get_class($paper), "Challenge\App\Paper");
+        $this->assertEquals(RPSHelper::getClassName(get_class($paper)), "Paper");
     }
 
     public function testCheckScissorsType()
     {
         $scissors = new Scissors();
-        $this->assertEquals(get_class($scissors), "Challenge\App\Scissors");
+        $this->assertEquals(RPSHelper::getClassName(get_class($scissors)), "Scissors");
     }
 }
