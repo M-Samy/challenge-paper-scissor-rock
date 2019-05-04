@@ -1,5 +1,5 @@
 <?php
-namespace Challeng\App;
+namespace Challenge\App;
 
 include_once("PlayersInterface.php");
 use Challenge\PlayersInterface;

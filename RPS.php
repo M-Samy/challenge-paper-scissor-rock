@@ -7,10 +7,10 @@ include_once("app/Paper.php");
 include_once("app/Players.php");
 include_once("Helpers/RPSHelper.php");
 
-use Challeng\App\Rock;
-use Challeng\App\Scissors;
-use Challeng\App\Paper;
-use Challeng\App\Players;
+use Challenge\App\Rock;
+use Challenge\App\Scissors;
+use Challenge\App\Paper;
+use Challenge\App\Players;
 use Challenge\Helpers\RPSHelper;
 
 class RPS
